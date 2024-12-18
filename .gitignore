@@ -1,0 +1,81 @@
+# Maven build directories
+/target/
+
+# IntelliJ IDEA-specific files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Logs
+logs/
+*.log
+*.out
+
+# Temporary files
+*.tmp
+*.temp
+
+# Java and JVM-specific files
+*.class
+*.jar
+*.war
+*.ear
+
+# MySQL Database Dumps
+*.sql
+*.sql.gz
+*.dump
+
+# Generated files and caches
+*.db
+*.sqlite
+hs_err_pid*
+*.pid
+
+# Test reports
+/test-output/
+surefire-reports/
+failsafe-reports/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Spring Boot-specific
+.env
+/*.env
+
+# Local environment configurations
+src/main/resources/application-local.properties
+src/main/resources/application-local.yml
+
+# Maven-specific files
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# IntelliJ's generated coverage reports
+*.exec
+
+# Sensitive files
+*.key
+*.pem
+*.crt
+db.properties
+
+# JavaFX SDK directories
+javafx-sdk-*/
+
+# Scene Builder cache files
+*.fxml~
+*.fxml.class
+
+# JavaFX build caches
+/build/
+
+# Ensure .gitignore itself is not ignored
+!.gitignore
