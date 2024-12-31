@@ -15,7 +15,6 @@ public class Model{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name, phone;
-
     @Override
     public String toString(){
         return "ID: "+id+"   -   Name: "+name+"   -   Phone: "+phone;
