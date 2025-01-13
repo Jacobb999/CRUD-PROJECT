@@ -1,26 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.java.fx.Controller">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="600.0">
+      <AnchorPane prefHeight="600.0" prefWidth="900.0">
          <children>
-            <Label layoutX="110.0" layoutY="103.0" text="Name:">
-               <font>
-                  <Font name="Tahoma" size="18.0" />
-               </font></Label>
-            <Label layoutX="110.0" layoutY="136.0" text="Phone:">
-               <font>
-                  <Font name="Tahoma" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtName" layoutX="183.0" layoutY="102.0" />
-            <TextField fx:id="txtPhone" layoutX="183.0" layoutY="135.0" />
+            <BorderPane prefHeight="600.0" prefWidth="900.0">
+               <top>
+                  <AnchorPane prefHeight="35.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="35.0" prefWidth="900.0" styleClass="top-form" stylesheets="@../../../StyleSheet/Main.css">
+                           <children>
+                              <Button layoutX="544.8000000000001" layoutY="4.2" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" styleClass="close" stylesheets="@../../../StyleSheet/Main.css" AnchorPane.rightAnchor="3.199999999999932" AnchorPane.topAnchor="4.2">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="CLOSE" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="810.0" layoutY="5.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" styleClass="minimize" stylesheets="@../../../StyleSheet/Main.css">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="MINUS" />
+                                 </graphic>
+                              </Button>
+                              <FontAwesomeIcon glyphName="USERS" layoutX="14.0" layoutY="26.0" size="2em" />
+                              <Label layoutX="52.0" layoutY="9.0" text="CRUD">
+                                 <font>
+                                    <Font name="Tahoma" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="565.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="565.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@../../../StyleSheet/Main.css">
+                           <children>
+                              <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="67.0" layoutY="189.0" selectionFill="BLACK" size="7em" />
+                              <Label layoutX="64.0" layoutY="201.0" text="Welcome" textFill="WHITE">
+                                 <font>
+                                    <Font name="Tahoma" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="88.79998779296875" endY="1.52587890625E-5" layoutX="105.0" layoutY="234.0" startX="-98.60000610351562" startY="1.52587890625E-5" stroke="WHITE" />
+                              <Button fx:id="btnCreate" layoutX="1.0" layoutY="285.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="198.0" styleClass="nav-btn" stylesheets="@../../../StyleSheet/Main.css" text="HOME">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="btnUpdate" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="198.0" styleClass="nav-btn" text="CREATE">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="PLUS" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="btnSave" layoutX="1.0" layoutY="380.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="198.0" styleClass="nav-btn" text="SAVE">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="SAVE" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="btnDelete" disable="true" layoutX="1.0" layoutY="427.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="198.0" styleClass="nav-btn" text="DELETE">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="TRASH" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="homeForm" prefHeight="566.0" prefWidth="700.0" stylesheets="@../../../StyleSheet/Main.css" visible="false">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="white-bg" />
+                           </styleClass>
+                           <children>
+                              <BarChart fx:id="homeChart" layoutX="37.0" layoutY="34.0" prefHeight="474.0" prefWidth="625.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="createForm" layoutX="1.0" prefHeight="566.0" prefWidth="700.0" stylesheets="@../../../StyleSheet/Main.css">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="white-bg" />
+                           </styleClass>
+                           <children>
+                              <AnchorPane layoutX="52.0" layoutY="227.0" prefHeight="304.0" prefWidth="558.0">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                                 <children>
+                                    <ListView fx:id="list" layoutX="19.0" layoutY="12.0" prefHeight="279.0" prefWidth="532.0" />
+                                    <Label fx:id="lblTotal" layoutX="221.0" layoutY="11.0" prefHeight="18.0" prefWidth="12.0" />
+                                 </children>
+                              </AnchorPane>
+                              <Label fx:id="lblWarning" layoutX="387.0" layoutY="399.0" prefHeight="26.0" prefWidth="240.0" />
+                              <AnchorPane layoutX="52.0" layoutY="23.0" prefHeight="189.0" prefWidth="326.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="btnAdd" layoutX="115.0" layoutY="127.0" mnemonicParsing="false" onAction="#create" prefHeight="34.0" prefWidth="76.0" styleClass="create-btn" text="CREATE" />
+                                    <Label layoutX="61.0" layoutY="23.0" text="ID:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtId" layoutX="113.0" layoutY="21.0" />
+                                    <TextField fx:id="txtName" layoutX="113.0" layoutY="49.0" />
+                                    <Label layoutX="44.0" layoutY="52.0" text="Name:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtPhone" layoutX="113.0" layoutY="81.0" />
+                                    <Label layoutX="42.0" layoutY="80.0" text="Phone:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="416.0" layoutY="44.0" prefHeight="130.0" prefWidth="246.0" stylesheets="@../../../StyleSheet/Main.css">
+                                 <styleClass>
+                                    <String fx:value="nav-form" />
+                                    <String fx:value="card" />
+                                 </styleClass>
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="CHECK" layoutX="28.0" layoutY="82.0" size="4em" wrappingWidth="17.5999755859375" />
+                                    <Label fx:id="lblTotal" alignment="CENTER_RIGHT" layoutX="76.0" layoutY="8.0" prefHeight="22.0" prefWidth="157.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial" size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="109.0" layoutY="90.0" text="Total active" textFill="WHITE">
+                                       <font>
+                                          <Font name="Tahoma" size="17.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="searchForm" prefHeight="566.0" prefWidth="700.0" visible="false">
+                           <children>
+                              <AnchorPane prefHeight="566.0" prefWidth="700.0" stylesheets="@../../../StyleSheet/Main.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane layoutX="68.0" layoutY="43.0" prefHeight="312.0" prefWidth="582.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <Label layoutX="326.0" layoutY="384.0" text="Search Form" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
          </children>
       </AnchorPane>
    </children>
